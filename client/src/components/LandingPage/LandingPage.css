@@ -1,0 +1,73 @@
+#background {
+    width: 100%;
+    z-index:-1;
+    position: fixed;
+    left: 0%;
+    opacity: 0.2
+}
+
+.create {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+
+.landing{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 150px;
+    padding-left: 150px;
+
+
+}
+
+.text {
+    text-align: start;
+    padding-bottom: 20px;
+    font-size: large;
+    font-weight: 100;
+    margin-top: 8px;
+}
+
+
+
+.iconos{
+    width: 100%;
+    height: 30px;
+}
+
+.pie{
+    font-size: small;
+    margin-top: 300px;
+}
+
+
+
+.animated-text{
+    white-space: nowrap;
+    border-right: 3px solid var(--color-primary);
+    width: 10ch;
+    overflow: hidden;
+    animation: texto 3s 1 steps(30), cursor .5s infinite;
+    text-align: start;
+}
+
+.logo {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.titulo {
+    font-family: zebulon;
+}
+
+@keyframes texto {0% {width: 0}}
+@keyframes cursor {50% {border-color: transparent;}}

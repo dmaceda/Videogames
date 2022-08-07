@@ -21,4 +21,17 @@ describe('Videogame routes', () => {
       agent.get('/videogames').expect(200)
     );
   });
+  describe('GET /videogames/:id', () => {
+    it('should get 200', () =>
+      agent.get(`/videogames/${videogame.id}`).expect(200)
+    );
+  }
+  );
+  describe('POST /videogames', () => {
+    it('should get 200', () =>
+      agent.post('/videogames').send(videogame).expect(200)
+    );
+  }
+  );
+  
 });

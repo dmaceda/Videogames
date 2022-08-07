@@ -19,14 +19,18 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     released: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: null,
     },
     rating: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: null,
     },
     platforms: {
-      type: DataTypes.STRING,
-       allowNull: false,
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
     },
     createdInDb: {
       type: DataTypes.BOOLEAN,

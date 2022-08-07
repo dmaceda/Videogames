@@ -1,0 +1,42 @@
+.searchbar-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+
+.searchbar{
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 5px 8px;
+    padding-left: 20px;
+
+}
+
+.searchbar input{
+    background: transparent;
+    flex: 1;
+    color: white;
+
+}
+
+.searchbar button{
+    background: var(--color-primary);
+    width: 25px;
+    height: 25px;
+    color: var(--color-light);
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+
+}
+
+.searchbar button :hover{
+    color: white;
+}
+
+
