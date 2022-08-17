@@ -10,7 +10,7 @@
 
 .cards-container{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap:0rem;
 
 }
@@ -132,3 +132,24 @@
       transform: rotate(1turn);
     }
   }
+
+
+  /*********** MEDIA QUERIES (MEDIUM DEVICES ************/
+@media screen and (max-width: 1180px) {
+    .cards-container{
+         grid-template-columns: repeat(2, 1fr);  
+    }
+
+}
+
+/*********** MEDIA QUERIES (SMALL DEVICES ************/
+@media screen and (max-width: 740px) {
+    .cards-container{
+        grid-template-columns: repeat(1, 1fr);
+        
+    }
+    .filter-item{
+        max-width: 150px;
+        font-size: x-small;
+    }
+}

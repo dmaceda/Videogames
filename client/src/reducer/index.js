@@ -40,7 +40,8 @@ function rootReducer(state = initialState, action) {
                       videogames: filtered,
                       }
                     }
-
+          
+          
           case "FILTER_CREATED":
           const allGames = state.videogamesCopy;
           let payload = [];
@@ -82,22 +83,10 @@ function rootReducer(state = initialState, action) {
             case "ORDER_BY_RATING":
               let orderRating = action.payload === 'rat_d' ? 
               state.videogames.sort((a,b) => {
-                if(a.rating < b.rating){
-                  return -1;
-                }
-                if(a.rating > b.rating){
-                  return 1;
-                }
-                return 0;
+                return a.rating - b.rating;
               }
               ) : state.videogames.sort((a,b) => {
-                if(a.rating > b.rating){
-                  return -1;
-                }
-                if(a.rating < b.rating){
-                  return 1;
-                }
-                return 0;
+                return b.rating - a.rating;
               }
               );
               return {

@@ -115,6 +115,17 @@ code {
   object-fit: cover;
 }
 
+.ic{
+  filter: invert(100%)
+}
+.icox {
+  filter: invert(35%) sepia(93%) saturate(343%) hue-rotate(157deg) brightness(91%) contrast(90%);
+}
+
+.icox:hover {
+  filter: invert(17%) sepia(75%) saturate(7408%) hue-rotate(321deg) brightness(97%) contrast(112%);
+}
+
 :root {
   --color-bg: #090a0f;
   --color-bg-variant: #1b2735ac;

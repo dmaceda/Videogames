@@ -65,9 +65,65 @@
 }
 
 
-.titulo {
-    font-family: zebulon;
-}
 
 @keyframes texto {0% {width: 0}}
 @keyframes cursor {50% {border-color: transparent;}}
+
+
+  /*********** MEDIA QUERIES (MEDIUM DEVICES ************/
+  @media screen and (max-width: 1180px) {
+  #background{
+    width: 300%;
+  }
+  .landing{
+    width: 90%;
+    padding-top: 200px;
+    padding-left: 100px;
+    }
+    .text {
+    font-size: x-large;
+    }
+    .animated-text{
+    font-size: 50px;
+    }
+
+    .logo {
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    }
+    .pie{
+    font-size: small;
+    margin-top: 350px;
+    }   
+
+}
+
+/*********** MEDIA QUERIES (SMALL DEVICES ************/
+@media screen and (max-width: 740px) {
+    #background{
+        width: 300%;
+      }
+    .landing{
+        width: 90%;
+        padding-top: 150px;
+        padding-left: 30px;
+    }
+    .text {
+        font-size: medium;
+    }
+    .animated-text{
+    font-size: 30px;
+    }
+    
+    .logo {
+        width: 90%;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .pie{
+        display: none;
+    }
+
+
+}

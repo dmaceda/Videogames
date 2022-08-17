@@ -2,20 +2,19 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {getName, refreshState} from '../../actions';
 import './Searchbar.css';
-import {BsSearch} from 'react-icons/bs'
+import search from '../../images/search.png'
 
 
 function SearchBar() {
-    const dispatch = useDispatch();
-    const [name, setName] = useState('');
+      const dispatch = useDispatch();
+      const [name, setName] = useState('');
 
-    const handleChange = (e) => {
+      const handleChange = (e) => {
         e.preventDefault();
         setName(e.target.value);
+      }
 
-    }
-
-    const [loading, setLoading] = useState(false);
+      const [loading, setLoading] = useState(false);
 
 
   
@@ -24,7 +23,6 @@ function SearchBar() {
       e.preventDefault()
       dispatch(refreshState());
       setLoading(true);
-
       if (!name) {
           alert("Videogame's name required"); 
       } else {
@@ -35,22 +33,21 @@ function SearchBar() {
     };
 
 
-
-
-
-
    
-  return (
-    <div className='searchbar-container'>
-         
-
-
+    return (
+    <div className='searchbar-container'>    
       <form className='searchbar' action='#'>
-        <input onChange={(e) => handleChange(e)}type="text"
+        <input 
+        onChange={(e) => handleChange(e)}
+        type="text"
         placeholder='Search Videogame'
         required value={name}
          />
-         <button onClick={(e) => handleSubmit(e)} type='submit'><BsSearch/></button>
+         <button 
+         onClick={(e) => handleSubmit(e)} 
+         type='submit'>
+          <img src={search} alt="" className='ic' width="18px"/>
+          </button>
          { loading ? <div className="load load--full-height"></div> : null }
       </form >
     </div>

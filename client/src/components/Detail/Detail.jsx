@@ -4,17 +4,19 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getDetail, setGlobalEstate} from '../../actions/index'
 import { useEffect } from 'react'
 import './Detail.css'
-import {MdArrowBack, MdSportsVolleyball, MdOutlineSportsEsports} from 'react-icons/md'
-import {AiOutlineCalendar, AiOutlineStar} from 'react-icons/ai'
 import defaultImage_back from "../../images/back.jpg"
 import defaultImage from "../../images/create.png"
+import star from "../../images/star.png"
+import back from "../../images/back.png"
+import date from "../../images/date.png"
+import genre from "../../images/genre.png"
+import platform from "../../images/platform.png"
 
 
 const Detail = (props) => {
     const dispatch = useDispatch()
     const myVideogame = useSelector((state) => state.videogameDetail)
     
-
 
 
 useEffect(() => {
@@ -28,11 +30,6 @@ useEffect(() => {
 
 
 
-
-
-    
-
-
   return (
     <div>
 
@@ -43,7 +40,7 @@ useEffect(() => {
 
           <div id='backbutton'>
          <Link to="/home">
-            <button className='btn-clasic'><MdArrowBack/></button>
+            <button className='btn-clasic'><img src={back} alt="" className='ic' width='15px'/></button>
          </Link> 
           </div> 
 
@@ -58,13 +55,12 @@ useEffect(() => {
             </div>
             <div className='released'>
             <ul>
-              <li><AiOutlineCalendar className='ico'/> Released: <a>{myVideogame.released}</a> </li>
-              <li><AiOutlineStar className='ico' /> Rating: <a>{myVideogame.rating}</a> </li>
+              <li><img src={date} alt="" className='ic___' width='15px'/> <a>{myVideogame.released} </a> </li>
+              <li><img src={star} alt="" className='ic___' width='15px'/> <a>{myVideogame.rating}</a> </li>
             </ul>
             </div>
              <div className='generos-container'>
-              <MdSportsVolleyball className='ico'/>  Genres: 
-             
+             <img src={genre} alt="" className='ic___' width='15px'/>
            {myVideogame.genres?.map((genre, index) => {
                     return (
                       <ul  key={index}>
@@ -74,8 +70,8 @@ useEffect(() => {
                   })}
             </div> 
              <div className='generos-container'>
-              <MdOutlineSportsEsports className='ico'/> Platforms: 
-  
+             <img src={platform} alt="" className='ic___' width='15px'/> 
+             <div className='platform'>
             {myVideogame.platforms?.map((platform, index) => {
                     return (
                       <ul  key={index}>
@@ -83,6 +79,7 @@ useEffect(() => {
                       </ul>
                     );
                   })}
+             </div>
             </div>  
         </div>
             </div>

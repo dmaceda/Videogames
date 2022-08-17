@@ -5,9 +5,6 @@ const { API_KEY } = process.env;
 const router = Router();
 const { Videogame, Genre } = require('../db');
 
-console.log(API_KEY)
-
-
 
 
 //Funcion para traer videogames de la API
@@ -15,23 +12,16 @@ console.log(API_KEY)
 const getApiInfo = async (i) => {
     const apiUrl = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`);
     const apiInfo = apiUrl.data.results.map(game => {
-
         return {
             id: game.id,
             name: game.name,
             image: game.background_image,
             rating: game.rating,
             genres: game.genres.map(genre => genre.name)
-        };
-        
+        };  
     });
-    
-
     return apiInfo;
-
 }
-
-
 
 // Funcion para traer los videogames de la DB
 
@@ -47,31 +37,18 @@ const getDbInfo = async () => {
     });
 }
 
-
-
-
-
-
-// const getAllVideogames = async (i) => {
-//     const apiInfo = await getApiInfo(i);
-//     const dbInfo = await getDbInfo();
-//     const allInfo = apiInfo.concat(dbInfo);
-//     return allInfo;
-// }
-
-
 //Ruta para traer todos los videogames y filtrar por query
 
 router.get('/videogames', async (req, res) => {
     const name = req.query.name;
     let allVideogames = [];
-    for(let i = 1; i <= 10; i++){
+    for(let i = 1; i <= 5; i++){
         allVideogames.push(await getApiInfo(i));
     }
     const dbInfo = await getDbInfo();
     allVideogames.push(dbInfo);
 
-    Promise.all(allVideogames).then(allVideogames => {
+    await Promise.all(allVideogames).then(allVideogames => {
         allVideogames = allVideogames.flat();
               if (name) {
                   let gameName = allVideogames.filter(game => game.name.toLowerCase().includes(name.toLowerCase()));
@@ -81,10 +58,7 @@ router.get('/videogames', async (req, res) => {
               } else{
                   res.status(200).json(allVideogames);
               }
-          
-
            });
-
     });
 
 
@@ -94,7 +68,7 @@ router.get('/videogames', async (req, res) => {
  router.get('/genre', async (req, res) => {
      const genreApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
      const genre = genreApi.data.results.map(genre => {
-         return genre.name// genre = ["Action","Indie","Adventure","RPG",etc]//
+         return genre.name  // genre = ["Action","Indie","Adventure","RPG",etc]//
      });
      genre.forEach(gen => {
          Genre.findOrCreate({
@@ -136,7 +110,7 @@ router.get('/videogames', async (req, res) => {
 
 router.get('/videogames/:id', async (req, res) => {
     const id = req.params.id;
-  if (isNaN(id)) {
+  if (isNaN(id)) { //si mi id no es un numero busco en la DB
     try {
       let videogame = await Videogame.findByPk(id, {
         include: [
@@ -144,7 +118,7 @@ router.get('/videogames/:id', async (req, res) => {
             model: Genre,
             attributes: ["name"],
             through: {
-              attributes: [],
+            attributes: [],
             },
           },
         ],
@@ -187,10 +161,6 @@ router.get('/videogames/:id', async (req, res) => {
     }
 }
 );
-
-
-
-
 
 
 

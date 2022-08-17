@@ -10,7 +10,7 @@
     align-items: center;
     position: relative;
     top:35px;
-    left: 90px;
+    left: 50px;
     background-color: rgba(0, 0, 0, 0.436);
     width: max-content;
     padding: 2px 8px;
@@ -32,7 +32,7 @@
     align-items: center;
     position: relative;
     top:60px;
-    left: 530px;
+    left: 300px;
     font-size: small;
     background-color:rgb(255, 255, 0);
     padding: 4px;
@@ -54,4 +54,31 @@
     align-items: center;
     position: relative;
     bottom: 45px;
+}
+
+  /*********** MEDIA QUERIES (MEDIUM DEVICES ************/
+  @media screen and (max-width: 1180px) {
+    .name-container{
+        left: 50px;
+    }
+    .rating-container{
+        left: 320px;
+    }
+    .card-item-image{
+        height: 220px;
+    }
+
+}
+
+/*********** MEDIA QUERIES (SMALL DEVICES ************/
+@media screen and (max-width: 740px) {
+    .name-container{
+        left: 40px;
+    }
+    .rating-container{
+        left: 280px;
+    }
+    .card-item-image{
+        height: 200px;
+    }
 }

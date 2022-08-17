@@ -1,16 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './About.css';
-import {MdOutlineCreateNewFolder, MdFilterList, MdOutlineCategory, MdSearch} from 'react-icons/md';
-import {MdArrowBack} from 'react-icons/md';
-import {BiJoystick} from 'react-icons/bi';
-import {AiFillHtml5} from 'react-icons/ai';
-import {DiCss3, DiPostgresql} from 'react-icons/di';
-import {TbBrandJavascript} from 'react-icons/tb';
-import {DiReact} from 'react-icons/di';
-import {SiRedux, SiSequelize} from 'react-icons/si';
 import Navbar from '../Navbar/Navbar';
 import logo from '../../images/gamesland.png'
+import back from "../../images/back.png"
+import platform from "../../images/platform.png"
+import genre from "../../images/genre.png"
+import search from "../../images/search.png"
+import filter from "../../images/filter.png"
+import crea from "../../images/crea.png"
+import html from "../../images/html.png"
+import css from "../../images/css.png"
+import js from "../../images/js.png"
+import react from "../../images/react.png"
+import redux from "../../images/redux.png"
+import seq from "../../images/seq.png"
+import post from "../../images/post.png"
+
 
 const About = () => {
   return (
@@ -19,7 +25,7 @@ const About = () => {
         <Navbar/>
         <div className='cont-back'>
         <Link to="/home">
-            <button className='btn-clasic'><MdArrowBack/></button>
+            <button className='btn-clasic'><img src={back} alt="" className='ic' width='15px'/></button>
          </Link> 
         </div>
         
@@ -38,31 +44,31 @@ const About = () => {
         <div>
         <ul className='list'>
         <div className='list-items'>
-          <AiFillHtml5 className='i'/>
+        <img src={html} alt="" className='icox' width='25px'/>
           <li>HTML</li>
           </div>
           <div className='list-items'>
-          <DiCss3 className='i'/>
+          <img src={css} alt="" className='icox' width='25px'/>
           <li>CSS</li>
           </div> 
           <div className='list-items'>
-          <TbBrandJavascript className='i'/>
+          <img src={js} alt="" className='icox' width='25px'/>
           <li>JavasCript</li>
           </div> 
           <div className='list-items'>
-          <DiReact className='i'/>
+          <img src={react} alt="" className='icox' width='25px'/>
           <li>React</li>
           </div> 
           <div className='list-items'>
-          <SiRedux className='i'/>
+          <img src={redux} alt="" className='icox' width='25px'/>
           <li>Redux</li>
           </div> 
           <div className='list-items'>
-          <DiPostgresql className='i'/>
+          <img src={post} alt="" className='icox' width='25px'/>
           <li>Postgres</li>
           </div> 
           <div className='list-items'>
-          <SiSequelize className='i'/>
+          <img src={seq} alt="" className='icox' width='25px'/>
           <li>Sequelize</li>
           </div> 
         </ul>
@@ -72,23 +78,23 @@ const About = () => {
          <div>
         <ul className='lista'>
         <div className='lista-items'>
-          <BiJoystick className='iconos'/>
+         <img src={platform} alt="" className='ic' width='25px'/>
           <li>+2000 Videogames</li>
           </div>
           <div className='lista-items'>
-          <MdOutlineCategory className='iconos'/>
+          <img src={genre} alt="" className='ic' width='25px'/>
           <li>+50 Categorias</li>
           </div>
           <div className='lista-items'>
-          <MdSearch className='iconos'/>
+          <img src={search} alt="" className='ic' width='25px'/>
           <li>Busca tu Videogame</li>
           </div>
           <div className='lista-items'>
-          <MdFilterList className='iconos'/>
+          <img src={filter} alt="" className='ic' width='25px'/>
           <li>Filtra y ordena</li>
           </div>
           <div className='lista-items'>
-          <MdOutlineCreateNewFolder className='iconos'/>
+          <img src={crea} alt="" className='ic' width='25px'/>
           <li>Crear tu Videogame</li>
           </div>
 

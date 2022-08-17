@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {postVideogame, getGenre, getGames} from '../../actions'
 import './GameCreate.css'
-import {AiOutlineCheckCircle} from 'react-icons/ai'
-import {FiAlertCircle} from 'react-icons/fi'
-import {MdArrowBack} from 'react-icons/md'
+import back from "../../images/back.png"
+import ok from "../../images/ok.png"
+import err from "../../images/err.png"
 
 
 const platforms = [
@@ -61,14 +61,15 @@ const platforms = [
     "Neo Geo",
     "Web"
   ]
-
   
-const GameCreate = () => {
-    const dispatch = useDispatch()
+  
+  
+  const GameCreate = () => {
+      const dispatch = useDispatch()
+    const genres = useSelector(state => state.genres)
     const [error, setError] = useState({});
     const [messageOk, setMessageOk] = useState('');
     const [messageErr, setMessageErr] = useState('');
-    const genres = useSelector(state => state.genres)
     const [input, setInput] = useState({
         name: '',
         description: '',
@@ -77,8 +78,19 @@ const GameCreate = () => {
         platforms: [],
         genres: []
     })
+    
+    
+    useEffect(() => {
+        dispatch(getGames());
+      },[dispatch]);
+    
+    
+      useEffect(() => {
+        dispatch(getGenre());
+    
+      },[dispatch]);
 
-
+      
 
     function validate(input) {
         let errorValidate = {};
@@ -89,7 +101,7 @@ const GameCreate = () => {
             errorValidate.description = "* Description required";
         }
         if (input.platforms.length === 0) {
-            errorValidate.platforms = "* Platform(s) required";
+            errorValidate.platforms = "* Platform(s) selection required";
          }
          if (input.genres.length === 0) {
             errorValidate.genres = "* Genre(s) selection required";
@@ -159,15 +171,6 @@ const GameCreate = () => {
     setMessageErr('')
     }
 
-    useEffect(() => {
-        dispatch(getGames());
-      },[dispatch]);
-    
-    
-      useEffect(() => {
-        dispatch(getGenre());
-    
-      },[dispatch]);
 
 
 
@@ -175,14 +178,14 @@ const GameCreate = () => {
     <div className='create-container'>
         <div className='back_'>
         <Link to='/home'>
-           <button className='btn-clasic'><MdArrowBack/></button>
+           <button className='btn-clasic'><img src={back} alt="" className='ic' width='15px'/></button>
         </Link>
         </div>
         <div className='message-ok'>
-        {messageOk ? (<p className=""><AiOutlineCheckCircle/>{messageOk}</p>) : null}
+        {messageOk ? (<p className=""><img src={ok} alt="" className='ok_' width='30px'/>{messageOk}</p>) : null}
         </div>
         <div className='message-error'>
-        {messageErr ? (<p className=""><FiAlertCircle/>{messageErr}</p>) : null}
+        {messageErr ? (<p className=""><img src={err} alt="" className='err_' width='30px'/>{messageErr}</p>) : null}
         </div>
         <form className='formulario' onSubmit={(e) => handleSubmit(e)}>
                 <h2>Create a Videogame</h2>

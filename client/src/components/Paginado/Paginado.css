@@ -23,6 +23,9 @@ ul {
     box-shadow: 0 0 10px  var(--color-secundary), 0 0 40px  var(--color-secundary), 0 0 80px  var(--color-secundary);
 }
 
+
+
+
 .page-item_ {
     background-color: transparent;
     padding: 2px 8px;

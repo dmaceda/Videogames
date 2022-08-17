@@ -40,3 +40,52 @@
 }
 
 
+  /*********** MEDIA QUERIES (MEDIUM DEVICES ************/
+  @media screen and (max-width: 1180px) {
+    .searchbar-container{
+        width: 40%;
+    }
+    .searchbar{
+        width: 80%;  
+    }
+    .searchbar button{
+        width: 25px;
+        height: 20px;
+
+    }
+    .searchbar input{
+        font-size: x-small;
+        width: 110px;
+    
+    }
+    .ic{
+        width: 14px;
+    }
+
+}
+
+/*********** MEDIA QUERIES (SMALL DEVICES ************/
+@media screen and (max-width: 740px) {
+    .searchbar-container{
+        width: 50%;
+    }
+    .searchbar{
+        width: 100%;
+        max-width: 500px; 
+        padding-left: 10px;
+        
+    }
+    .searchbar button{
+        width: 25px;
+        height: 20px;
+
+    }
+    .searchbar input{
+        font-size: x-small;
+        width: 110px;
+    
+    }
+    .ic{
+        width: 14px;
+    }
+}

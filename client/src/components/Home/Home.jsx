@@ -3,60 +3,50 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGames, getGenre, filterByGenre, filterCreated, orderByName, orderByRating, refreshState } from '../../actions';
 import { Link } from 'react-router-dom';
+import './Home.css';
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
 import SearchBar from '../SearchBar/SearchBar';
-import './Home.css';
 import Navbar from '../Navbar/Navbar';
-import {FiRefreshCw} from 'react-icons/fi';
-import {MdSort, MdOutlineManageSearch} from 'react-icons/md';
 import Footer from '../Footer/Footer';
+import refresh from '../../images/refresh.png';
+import filter from '../../images/filter.png';
+import sort from '../../images/sort.png';
+
 
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();// creo una instancia de dispatch para usarlo en el componente
   const allGames = useSelector(state => state.videogames); //traigo todo los games del estado y la guardo, evito mapstatetoprops
   const allGenres = useSelector(state => state.genres); //traigo todo los genres del estado y la guardo, evito mapstatetoprops
- //Defino estados locales
-  const [currentPage, setCurrentPage] = useState(1);
-  const [gamesPerPage, setGamesPerPage] = useState(15);
+  //Defino estados locales
+  const [currentPage, setCurrentPage] = useState(1);  // defino un estado con la pagina actual y lo seteo en 1 (pagina 1)
+  const [gamesPerPage, setGamesPerPage] = useState(15); // defino un estado con el numero de games por pagina y lo seteo en 15 (15 games por pagina)
   const [orden, setOrden] = useState('');
-  const indexOfLastGame = currentPage * gamesPerPage; //15
-  const indexOfFirstGame = indexOfLastGame - gamesPerPage; //0
-  const currentGames = allGames?.slice(indexOfFirstGame, indexOfLastGame); //currentGames es un array con los 15 primeros games
+  const indexOfLastGame = currentPage * gamesPerPage; // calculo el indice del ultimo game de la pagina actual 15 * 1 = 15
+  const indexOfFirstGame = indexOfLastGame - gamesPerPage; // calculo el indice del primer game de la pagina actual 15 * 1 = 15 - 15 = 0
+  const currentGames = allGames?.slice(indexOfFirstGame, indexOfLastGame); //traigo mi estado con todos los games y con el metodo slice separo mi array con 15 games
 
+  //seteo el estado con el numero de pagina actual
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   }
-
-
-
-
 
 
   useEffect(() => {
     dispatch(getGames());
   },[dispatch]);
 
- 
-
- 
-
 
   useEffect(() => {
     dispatch(getGenre());
-
   },[dispatch]);
-
-
-
-
-
 
 
 
   function handleClick(e) {
     e.preventDefault();
+    dispatch(refreshState());
     dispatch(getGames());
   }
 
@@ -76,6 +66,7 @@ const Home = () => {
     setCurrentPage(1);
     setOrden(e.target.value);
   }
+  
   function handleOrderByRating(e) {
     e.preventDefault();
     dispatch(orderByRating(e.target.value));
@@ -84,29 +75,23 @@ const Home = () => {
   }
 
 
-
-
-
   return (
     <div >
       <Navbar />
        <div className='home-container'>
         <div className='create-search'>
-          <button className='refresh'onClick={e => handleClick(e)}><FiRefreshCw/></button>
+          <button className='refresh'onClick={e => handleClick(e)}> <img className='ic' src={refresh} alt="" width="20px"/> </button>
           <SearchBar />
         </div>
-
-    
      <div className='filter-container'>
 
       <div className='filter'> 
         <div>
           <div className='icon'>
-          <p><MdOutlineManageSearch/>Filter by</p>
+          <p><img src={filter} alt="" className='ic' width="12px"/> Filter by</p>
           </div>
            <select className='filter-item' onChange={e => handleFilterByGenre(e)}>
           <option value="All">Category</option>
-            <option value="All">All</option>
               {
               allGenres?.map(genre => (
                 <option  
@@ -115,17 +100,17 @@ const Home = () => {
                 >{genre.name}</option>
               ))
             }  
-          </select>
+          </select> 
+
           <select className='filter-item'  onChange={e=>handleFilterCreated(e)}>
             <option value="All">Type</option>
-            <option value="All">All</option>
             <option value="Exist">Exist</option>
             <option value="Created">Created</option>
           </select>
         </div>
         <div>
           <div className='icon'>
-          <p><MdSort/>Sort by</p>
+          <p><img src={sort} alt="" className='ic' width="12px"/>Sort by</p>
             </div>
           <select className='filter-item' onChange={e=> handleOrderByName(e)}>
             <option value="asc">AZ</option>
@@ -138,7 +123,7 @@ const Home = () => {
         
           </div>
           </div>
-     </div>
+        </div>
         </div>
         <div className="cards-container">
 
@@ -156,20 +141,19 @@ const Home = () => {
               </Link>
             </div>
           )
-         }) 
-        }
+         })}
          </div>
          <div className='paginado-container'>
          <Paginado
           gamesPerPage={gamesPerPage}
           allGames={allGames?.length}
           paginado={paginado}
+          currentPage={currentPage}
           />
          </div>
          <Footer/>
 
-</div>
-  );
-}
+    </div>
+  );}
 
 export default Home

@@ -16,7 +16,7 @@
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
+    margin-top: 100px;
     border: 1px solid var(--color-primary);
     border-radius: 30px;
     padding: 50px;
@@ -38,7 +38,6 @@
     margin-top: 30px;
     cursor: default;
     width: 80%;
-    color:var(--color-light);
 }
 
 .list-items{
@@ -48,16 +47,7 @@
  width: 30%;
 }
 
-.i{
-    width: 100%;
-    height: 30px;
-    color: var(--color-primary);
-}
 
-.i:hover {
-    color: var(--color-secundary);
-
-}
 
 .logo_about {
     width: 50%;
@@ -89,3 +79,54 @@
     margin-top: 30px;
     margin-left: 50px;
 }
+
+
+  /*********** MEDIA QUERIES (MEDIUM DEVICES ************/
+  @media screen and (max-width: 1180px) {
+    .about{
+        width: 90%;
+        margin-top: 200px;
+    }
+    .lista{
+        width: 90%;
+    }
+  
+  }
+  
+  /*********** MEDIA QUERIES (SMALL DEVICES ************/
+  @media screen and (max-width: 740px) {
+    
+    .text_about {
+        font-size: small;
+    }
+    .about{
+        width: 90%;
+        margin-top: 70px;
+        padding: 35px;
+    }
+    .logo_about {
+        width: 100%;
+    }
+    .icox {
+        width: 15px;
+    }
+    .list-items{
+        padding: 5px 5px;
+        border-radius: 20px;
+        font-size: x-small;
+        width: 30%;
+       }
+
+    .lista {
+        display: none;
+    }
+    .cont-back {
+        position: absolute;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+    .list {
+        margin-top: 2px;
+    }
+  
+  }
