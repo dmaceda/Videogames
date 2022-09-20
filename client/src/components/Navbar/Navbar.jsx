@@ -12,10 +12,12 @@ import plus from '../../images/plus.png'
 const Navbar = () => {
   return (
     <nav id='navbar'>
-      <div className='iso-container'>
+      
+      <Link to='/home' className='iso-container'>
       <img className='isologo' src={iso} alt="isologo" />
       <img className='log2' src={logo} alt="logo" />
-      </div>
+      </Link>
+
       <Link className='link' to= '/home'><a href="!#" id='nav-links'><img src={home} alt="" className='i__' /><p className='p'>Home</p></a></Link>
       <Link className='link' to='/about'><a href="!#" id='nav-links'><img src={about} alt="" className='i__'/><p className='p'>About</p></a></Link>
       <Link className='link' to="/create"><a href="!#" className="btn-clasic_"> <img src={plus} alt="" className='plus'/><p className='p'>Create</p></a></Link>

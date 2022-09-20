@@ -49,18 +49,18 @@ useEffect(() => {
             <img id='imgb'src={myVideogame.image || defaultImage} alt="img not found" width='20%' height='200px'/>
             
             <div className='contenido'>
-            <h2 id='tit'>{myVideogame.name}</h2>
+            <h2 id='tit' >{myVideogame.name}</h2>
             <div className='img-container'>
             <h5>{myVideogame.description}</h5>
             </div>
             <div className='released'>
             <ul>
-              <li><img src={date} alt="" className='ic___' width='15px'/> <a>{myVideogame.released} </a> </li>
-              <li><img src={star} alt="" className='ic___' width='15px'/> <a>{myVideogame.rating}</a> </li>
+              <li><img src={date} alt="" className='ic___' width='20px'/> <a>{myVideogame.released} </a> </li>
+              <li><img src={star} alt="" className='ic___' width='20px'/> <a>{myVideogame.rating}</a> </li>
             </ul>
             </div>
              <div className='generos-container'>
-             <img src={genre} alt="" className='ic___' width='15px'/>
+             <img src={genre} alt="" className='ic___' width='20px'/>
            {myVideogame.genres?.map((genre, index) => {
                     return (
                       <ul  key={index}>
@@ -70,7 +70,7 @@ useEffect(() => {
                   })}
             </div> 
              <div className='generos-container'>
-             <img src={platform} alt="" className='ic___' width='15px'/> 
+             <img src={platform} alt="" className='ic___' width='20px'/> 
              <div className='platform'>
             {myVideogame.platforms?.map((platform, index) => {
                     return (

@@ -1,10 +1,14 @@
 .formulario{
-  width: 400px;
+  width: 700px;
   padding: 30px;
   margin: auto;
-  background-color: transparent;
-  border: 1px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   border-radius: 30px;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%,#090a0f 100%);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+ 
 }
 
 .formulario p {
@@ -12,12 +16,10 @@
   text-align: start;
 }
 
-.create-container{
-  margin-top: 100px;
-}
+
 
 .back_{
-
+  padding-top: 100px;
   display: flex;
   align-items: flex-start;
   margin-left: 50px;
@@ -125,10 +127,32 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
   filter: invert(13%) sepia(100%) saturate(5320%) hue-rotate(325deg) brightness(106%) contrast(106%);
 }
 
+.title_container{
+  display: flex;
+  justify-content: center;
+}
+.animated-text_{
+  white-space: nowrap;
+  font-size: 30px;
+  border-right: 3px solid var(--color-primary);
+  width: 18ch;
+  overflow: hidden;
+  animation: texto 3s 1 steps(30), cursor .5s infinite;
+  text-align: start;
+}
+
+
+@keyframes texto {0% {width: 0}}
+@keyframes cursor {50% {border-color: transparent;}}
+
 
 /*********** MEDIA QUERIES (MEDIUM DEVICES ************/
 @media screen and (max-width: 1024px) {
-  
+  .back_{
+    margin-left: 20px;
+    margin-bottom: 50px;
+    padding-top: 100px;
+  }
 
 }
 
@@ -137,9 +161,11 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
   .back_{
     margin-left: 20px;
     margin-bottom: 20px;
+    padding-top: 0px;
   }
   .formulario{
     width: 300px;
+    padding: 20px;
   }
   .create-container{
     margin-top: 40px;
@@ -153,6 +179,10 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
     width: 100%;
     font-size: x-small;
     margin-top: -80px;
+  }
+  .animated-text_{
+    font-size: 20px;
+
   }
 }
 

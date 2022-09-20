@@ -6,6 +6,7 @@ import './GameCreate.css'
 import back from "../../images/back.png"
 import ok from "../../images/ok.png"
 import err from "../../images/err.png"
+import defaultImage_back from "../../images/back.jpg"
 
 
 const platforms = [
@@ -70,8 +71,10 @@ const platforms = [
     const [error, setError] = useState({});
     const [messageOk, setMessageOk] = useState('');
     const [messageErr, setMessageErr] = useState('');
+    const [active, setActive] = useState(false)
     const [input, setInput] = useState({
         name: '',
+        image: '',
         description: '',
         released: '',
         rating: '',
@@ -134,6 +137,8 @@ const platforms = [
         })
     }
 
+  
+
 
     const handleSelectGenre = (e) => {
         setInput({
@@ -153,17 +158,23 @@ const platforms = [
         );
         console.log(error)
 
-        if (Object.keys(error).length === 0) {
-        dispatch(postVideogame(input))
-        setMessageOk('   Congrats! Game created successfully!')
-        setInput({
-            name: '',
-            description: '',
-            released: '0000-00-00',
-            rating: '',
-            platforms: [],
-            genres: []
-        })
+        if (Object.keys(error).length === 0 && input.name && input.description && input.genres && input.platforms && input.released) {
+          
+                dispatch(postVideogame(input))
+                setMessageOk('   Congrats! Game created successfully!')
+                setInput({
+                    name: '',
+                    image: '',
+                    description: '',
+                    released: '0000-00-00',
+                    rating: '',
+                    platforms: [],
+                    genres: []
+                })
+        
+
+
+        
     }else{
         setMessageErr('   Please complete the *required fields')
         return;
@@ -171,11 +182,12 @@ const platforms = [
     setMessageErr('')
     }
 
-
+  console.log(input)
 
 
   return (
     <div className='create-container'>
+        <img className='background'  src={defaultImage_back} alt="img not found" />
         <div className='back_'>
         <Link to='/home'>
            <button className='btn-clasic'><img src={back} alt="" className='ic' width='15px'/></button>
@@ -188,7 +200,9 @@ const platforms = [
         {messageErr ? (<p className=""><img src={err} alt="" className='err_' width='30px'/>{messageErr}</p>) : null}
         </div>
         <form className='formulario' onSubmit={(e) => handleSubmit(e)}>
-                <h2>Create a Videogame</h2>
+                <div className='title_container'>
+                <h2 className='animated-text_' >Create a Videogame</h2>
+                </div>
                 <label ><p>Name</p></label>
                 <input 
                 autoComplete='off'
@@ -197,7 +211,6 @@ const platforms = [
                 type="text"
                 name="name" 
                 value={input.name}
-                required
                 onChange={(e) => handleChange(e)} />
                 {error.name ? (<p className="errors">{error.name}</p>) : null}
 
@@ -207,10 +220,24 @@ const platforms = [
                 autoComplete='off'
                 className='controls'
                 type="date"
-                max={new Date().toISOString().slice(0, 10)}
                 name="released"
                 value={input.released} 
                 onChange={(e) =>handleChange(e)}/>
+
+
+
+
+                <label ><p>Image</p></label>
+                <input 
+                autoComplete='off'
+                className='controls'
+                placeholder='Enter a image url'
+                type="text"
+                name="image"
+                value={input.image} 
+                onChange={(e) =>handleChange(e)}/>
+
+
                 
         
           
@@ -222,9 +249,6 @@ const platforms = [
                 type="number"
                 name="rating"
                 value={input.rating}
-                step="0.1"
-                min="0"
-                max="5"
                 onChange={(e) =>handleChange(e)} />
                 {input.rating <0 || input.rating >5 ? (<p className="errors">Enter a value in the range 0-5</p>) : null}
   
@@ -233,13 +257,16 @@ const platforms = [
                 <select 
                 placeholder='Select a platform'
                 className='controls'
-                onChange={(e) => handleSelectPlatform(e)}>{platforms.map(platform => (
+                onChange={(e) => handleSelectPlatform(e)}>
+                     <option>Select Plataform</option>
+                    {platforms.map(platform => (
                     <option 
                     key={platform} 
                     value={platform}
                     >{platform}
                     </option>
                     ))}
+                   
                 </select>
                 <ul><li><p className='charged'>{input.platforms.map(plat=> plat + '  ')}</p></li></ul>
                 {error.platforms ? (<p className="errors">{error.platforms}</p>) : null}
@@ -248,7 +275,9 @@ const platforms = [
                 <label ><p>Genre(s)</p></label>
                 <select
                 className='controls' 
-                onChange={(e)=> handleSelectGenre(e)}>{genres.map(genre => (
+                onChange={(e)=> handleSelectGenre(e)}>
+                    <option>Select Genre</option>
+                    {genres.map(genre => (
                     <option 
                     key={genre.id} 
                     value={genre.name}
@@ -268,10 +297,9 @@ const platforms = [
                 type="text"
                 name="description"
                 value={input.description}
-                required
                 onChange={(e) =>handleChange(e)}/>
                 {error.description ? (<p className="errors">{error.description}</p>) : null}
-                
+            
                 <div className='butt_'>
                 <button 
                 className='btn-neon'

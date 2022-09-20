@@ -23,6 +23,7 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);  // defino un estado con la pagina actual y lo seteo en 1 (pagina 1)
   const [gamesPerPage, setGamesPerPage] = useState(15); // defino un estado con el numero de games por pagina y lo seteo en 15 (15 games por pagina)
   const [orden, setOrden] = useState('');
+  const [activeLink, setActiveLink] = useState(null);
   const indexOfLastGame = currentPage * gamesPerPage; // calculo el indice del ultimo game de la pagina actual 15 * 1 = 15
   const indexOfFirstGame = indexOfLastGame - gamesPerPage; // calculo el indice del primer game de la pagina actual 15 * 1 = 15 - 15 = 0
   const currentGames = allGames?.slice(indexOfFirstGame, indexOfLastGame); //traigo mi estado con todos los games y con el metodo slice separo mi array con 15 games
@@ -30,6 +31,7 @@ const Home = () => {
   //seteo el estado con el numero de pagina actual
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
+    setActiveLink(pageNumber);
   }
 
 
@@ -48,16 +50,19 @@ const Home = () => {
     e.preventDefault();
     dispatch(refreshState());
     dispatch(getGames());
+    setCurrentPage(1);
   }
 
   function handleFilterByGenre(e) {
     dispatch(refreshState());
     dispatch(filterByGenre(e.target.value));
+    setCurrentPage(1);
   }
 
 
   function handleFilterCreated(e) {
     dispatch(filterCreated(e.target.value));
+    setCurrentPage(1);
   }
   
   function handleOrderByName(e) {
@@ -76,7 +81,7 @@ const Home = () => {
 
 
   return (
-    <div >
+    <div  className='home'>
       <Navbar />
        <div className='home-container'>
         <div className='create-search'>
@@ -143,14 +148,20 @@ const Home = () => {
           )
          })}
          </div>
+
+         { allGames.length !== 0 ? 
          <div className='paginado-container'>
          <Paginado
           gamesPerPage={gamesPerPage}
           allGames={allGames?.length}
           paginado={paginado}
           currentPage={currentPage}
+          activeLink={activeLink}
           />
-         </div>
+         </div> : null}
+
+
+
          <Footer/>
 
     </div>

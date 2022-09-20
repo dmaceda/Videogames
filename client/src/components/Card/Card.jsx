@@ -6,26 +6,50 @@ import star from "../../images/star.png"
 
 const Card = ({name, image, genres, rating, }) => {
   return (
-    <div className='card-item' >
-        <div className='rating-container'>
-        <h6 className='rating'><img src={star} alt="" width='10px'  />{rating}</h6>
-        </div>
-        <div className='name-container'>
-          <h5 className='name'>{name}</h5>
-        </div>
+    <div className='cards'>
+      <div className='card'>
+          <div className='container'>
+              <div className='nombre_container'>
+              <h5 className='nombre'>{name}</h5>
+              <div className='rating-container'>
+              <h6 className='rating' ><img src={star} alt="" width='15px'  />{rating}</h6>
+              </div>
+              </div>
+              <img className='card-item-image' src={image || defaultImage } alt="img not found" width='100%' height='160px'/>
+          </div>
+          <div className='details'>
+              <div className='genres-container'>
+              {genres.map((genre, index) => {
+                     return (
+                       <ul  key={index}>
+                         <li className='genres'>{genre.name?genre.name:genre}</li>
+                       </ul>
+                     );
+                   })}
+              </div>
+          </div>
+      </div>
+    </div>
+    // <div className='card-item' >
+    //     <div className='rating-container'>
+    //     <h6 className='rating'><img src={star} alt="" width='10px'  />{rating}</h6>
+    //     </div>
+    //     <div className='name-container'>
+    //       <h5 className='name'>{name}</h5>
+    //     </div>
 
-        <img className='card-item-image' src={image || defaultImage } alt="img not found" width='90%' height='200px'/>
-        <div className='genres-container'>
-        {genres.map((genre, index) => {
-                    return (
-                      <ul  key={index}>
-                        <li className='genres'>{genre.name?genre.name:genre}</li>
-                      </ul>
-                    );
-                  })}
-                </div>
+    //     <img className='card-item-image' src={image || defaultImage } alt="img not found" width='90%' height='200px'/>
+    //     <div className='genres-container'>
+    //     {genres.map((genre, index) => {
+    //                 return (
+    //                   <ul  key={index}>
+    //                     <li className='genres'>{genre.name?genre.name:genre}</li>
+    //                   </ul>
+    //                 );
+    //               })}
+    //             </div>
 
-            </div>
+    //         </div>
 
       )
     }   

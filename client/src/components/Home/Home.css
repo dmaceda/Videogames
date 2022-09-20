@@ -3,6 +3,7 @@
     margin-top: 20px;
 }
 
+
 .paginado-container{
     margin-top: 50px;
 }
@@ -11,12 +12,17 @@
 .cards-container{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap:0rem;
+    gap: 70px 40px;
+    width: 95%;
+    margin: 0 auto;
+    min-height: 70vh;
 
 }
 .cards-items{
     border-radius: 2rem;
     transition: var(--transition);
+    height: 200px;
+    margin-bottom: 30px;
 
 }
 .cards-items:hover{
@@ -24,13 +30,8 @@
     transform: scale(1.1)
 }
 
-.cards-items-image {
-    border-radius: 1.5rem;
-    overflow: hidden;
-}
-.cards-items h3 {
- margin: 1.2rem 0 2rem;
-}
+
+
 .link {
     text-decoration: none;
     color: var(--white);
@@ -86,15 +87,17 @@
 
 .refresh{
     background-color: transparent;
-    color: var(--color-light);
     margin-right: 20px;
     cursor: pointer;
 }
 
-.refresh:hover{
-  color: white;
-}
 
+
+.ic:hover{
+    filter: invert(86%) sepia(12%) saturate(18%) hue-rotate(177deg) brightness(98%) contrast(97%);
+
+
+}
 
 
 .load {
@@ -103,11 +106,13 @@
     position: absolute;
     left: 917px;
     top: -130px;
+ 
   }
   
   .load--full-height {
     align-items: center;
     height: 100%;
+  
   }
   
   .load::after {
@@ -146,10 +151,12 @@
 @media screen and (max-width: 740px) {
     .cards-container{
         grid-template-columns: repeat(1, 1fr);
+        width: 90%;
         
     }
     .filter-item{
         max-width: 150px;
         font-size: x-small;
     }
+    
 }

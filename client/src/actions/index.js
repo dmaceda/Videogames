@@ -16,7 +16,6 @@ import axios from "axios";
         }
     }
 
-
     //Obtener todos los generos
     export function getGenre() {
             return async function(dispatch) {

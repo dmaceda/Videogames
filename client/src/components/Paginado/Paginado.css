@@ -11,13 +11,21 @@ ul {
 }
 .page-item {
     background-color: var(--color-primary);
-    padding: 2px 8px;
-    margin: 5px;
+    padding: 4px 16px;
+    margin: 10px;
     border-radius: 4px;
-    margin-top: 50px;
+    margin-top: 5rem;
 
 }
 
+.class1 {
+    padding: 4px 16px;
+    margin: 10px;
+    border-radius: 4px;
+    margin-top: 5rem;
+    background-color: var(--color-secundary);
+    box-shadow: 0 0 10px  var(--color-secundary), 0 0 40px  var(--color-secundary), 0 0 80px  var(--color-secundary);
+}
 .page-item:hover {
     background-color: var(--color-secundary);
     box-shadow: 0 0 10px  var(--color-secundary), 0 0 40px  var(--color-secundary), 0 0 80px  var(--color-secundary);
@@ -28,8 +36,9 @@ ul {
 
 .page-item_ {
     background-color: transparent;
-    padding: 2px 8px;
-    margin-top: 50px;
+    padding: 4px 16px;
+    margin: 10px;
+    margin-top: 5rem;
     font-size: small;
 
 }
@@ -41,5 +50,26 @@ ul {
 
 
 
+  /*********** MEDIA QUERIES (MEDIUM DEVICES ************/
+  @media screen and (max-width: 1180px) {
+  
 
+}
+
+/*********** MEDIA QUERIES (SMALL DEVICES ************/
+@media screen and (max-width: 740px) {
+    .page-item_ {
+        padding: 2px 8px;
+        margin: 5px;
+    }
+    .page-item {
+        padding: 2px 8px;
+        margin: 5px;
+    }
+    .class1 {
+        padding: 2px 8px;
+        margin: 5px;
+
+    }
+}
 

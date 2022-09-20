@@ -1,9 +1,4 @@
 
-.card-item-image {
-    border-radius: 1rem;
-    overflow: hidden;
-
-}
 .name-container{
     display: flex;
     justify-content: center;
@@ -19,25 +14,21 @@
 
 }
 
-.contenido h6{
-    font-size: x-small;
-}
+
 
 
 .rating-container{
     color: black;
-    width: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top:60px;
-    left: 300px;
-    font-size: small;
-    background-color:rgb(255, 255, 0);
-    padding: 4px;
-    border-radius: 5px;
-    margin: 1px;
+    font-size: medium;
+    z-index: 5;
+    border-radius: 0 10px 0 0;
+    width: 0px;
+    height: 40px;
+    border-left: 25px solid rgb(255, 255, 0);
+    border-right: 25px solid rgb(255, 255, 0);
 }
 .genres {
     font-size: x-small;
@@ -53,20 +44,55 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    bottom: 45px;
+    margin: 15px;
+
+    
 }
+
+
+.cards{
+    display: grid;
+   
+    
+}
+
+.card{
+    background: radial-gradient(ellipse at bottom, #1b273525 0%,#090a0f94 100%); 
+    border-radius:10px;
+    
+}
+
+.card-item-image {
+    display: block;
+    overflow: hidden;
+
+}
+
+.container{
+    position: relative;
+    
+    
+}
+
+.nombre{
+    padding-top: 8px;
+    padding-left: 15px;
+    font-size: 17px;
+}
+
+.nombre_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
 
   /*********** MEDIA QUERIES (MEDIUM DEVICES ************/
   @media screen and (max-width: 1180px) {
-    .name-container{
-        left: 50px;
-    }
-    .rating-container{
-        left: 320px;
-    }
-    .card-item-image{
-        height: 220px;
-    }
+  
 
 }
 
@@ -79,6 +105,6 @@
         left: 280px;
     }
     .card-item-image{
-        height: 200px;
+        height: 150px;
     }
 }
