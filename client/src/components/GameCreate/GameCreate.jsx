@@ -77,6 +77,7 @@ const platforms = [
         image: '',
         description: '',
         released: '',
+        link: '',
         rating: '',
         platforms: [],
         genres: []
@@ -166,6 +167,7 @@ const platforms = [
                     name: '',
                     image: '',
                     description: '',
+                    link: '',
                     released: '0000-00-00',
                     rating: '',
                     platforms: [],
@@ -251,6 +253,16 @@ const platforms = [
                 value={input.rating}
                 onChange={(e) =>handleChange(e)} />
                 {input.rating <0 || input.rating >5 ? (<p className="errors">Enter a value in the range 0-5</p>) : null}
+
+                <label ><p>Game Link</p></label>
+                <input 
+                autoComplete='off'
+                className='controls'
+                placeholder='Enter a game url'
+                type="text"
+                name="link"
+                value={input.link} 
+                onChange={(e) =>handleChange(e)}/>
   
           
                 <label ><p>Platform(s)</p></label>

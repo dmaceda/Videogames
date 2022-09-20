@@ -2,9 +2,12 @@ import React from 'react'
 import './Card.css'
 import defaultImage from "../../images/create.png"
 import star from "../../images/star.png"
+import play from "../../images/play.png"
+import { Link } from 'react-router-dom';
 
 
-const Card = ({name, image, genres, rating, }) => {
+
+const Card = ({id, name, image, genres, rating, link }) => {
   return (
     <div className='cards'>
       <div className='card'>
@@ -15,7 +18,9 @@ const Card = ({name, image, genres, rating, }) => {
               <h6 className='rating' ><img src={star} alt="" width='15px'  />{rating}</h6>
               </div>
               </div>
+              <Link className='link' to={'/home/' + id}>
               <img className='card-item-image' src={image || defaultImage } alt="img not found" width='100%' height='160px'/>
+              </Link>
           </div>
           <div className='details'>
               <div className='genres-container'>
@@ -28,6 +33,10 @@ const Card = ({name, image, genres, rating, }) => {
                    })}
               </div>
           </div>
+          { link ? 
+          // <button className='but'><img src={play} alt="" className='play'/></button> 
+          <a href={link} target='_blank' rel="noreferrer"> <img src={play} alt="" className='play'/></a>
+          : null }
       </div>
     </div>
     // <div className='card-item' >

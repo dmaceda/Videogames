@@ -85,6 +85,14 @@
     justify-content: space-between;
 }
 
+.play {
+filter: invert(37%) sepia(32%) saturate(889%) hue-rotate(158deg) brightness(96%) contrast(90%);
+}
+
+.but{
+    background: transparent;
+}
+
 
 
 

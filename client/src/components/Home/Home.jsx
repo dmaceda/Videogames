@@ -141,9 +141,9 @@ const Home = () => {
           currentGames?.map((game) => {
           return (
             <div key={game.id} className='cards-items'>
-              <Link className='link' to={'/home/' + game.id}>
-              <Card className='card-container' name={game.name} image={game.image} genres={game.genres} rating={game.rating} key={game.id} description={game.description}/>
-              </Link>
+              
+              <Card className='card-container' id={game.id}name={game.name} image={game.image} genres={game.genres} rating={game.rating} key={game.id} description={game.description} link={game.link? game.link : null}/>
+             
             </div>
           )
          })}

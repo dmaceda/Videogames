@@ -11,7 +11,7 @@ const { Videogame, Genre } = require('../db');
 
 const getApiInfo = async (i) => {
     const apiUrl = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`);
-    const apiInfo = apiUrl.data.results.map(game => {
+    const apiInfo = apiUrl.data?.results.map(game => {
         return {
             id: game.id,
             name: game.name,
@@ -85,7 +85,7 @@ router.get('/videogames', async (req, res) => {
 //Ruta para guardar nuevo videogame en la DB
 
  router.post('/videogames', async (req, res) => {
-     const { name, description, released, rating, platforms, genres, image} = req.body;
+     const { name, description, released, rating, platforms, genres, image, link} = req.body;
 
      const videogameCreated = await Videogame.create({
          name,
@@ -93,7 +93,8 @@ router.get('/videogames', async (req, res) => {
          released,
          rating,
          platforms,
-         image
+         image,
+         link
      });
 
      //Conexion con la tabla de generos
@@ -134,6 +135,7 @@ router.get('/videogames/:id', async (req, res) => {
       let videogameNew = {
         name: videogame.name,
         image: videogame.image,
+        link: videogame.link, 
         description: videogame.description,
         rating: videogame.rating,
         genres: generos,
