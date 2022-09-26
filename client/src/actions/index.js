@@ -5,10 +5,10 @@ import axios from "axios";
     export function getGames() {
         return async function(dispatch) {
             try {
-                    var json = await axios.get('http://localhost:3001/videogames');
+                    var json = await axios.get('/videogames');
                     return dispatch({
                     type: "GET_GAMES",
-                    payload: json.data
+                    payload: json.data? json.data : null
                     });
                 }catch(error){
                 console.log(error);
@@ -20,10 +20,10 @@ import axios from "axios";
     export function getGenre() {
             return async function(dispatch) {
             try{
-                var json = await axios.get('http://localhost:3001/genre');
+                var json = await axios.get('/genre');
                 return dispatch({
                 type: "GET_GENRE",
-                payload: json.data
+                payload: json.data ? json.data : null
                     });
                 }catch(error){
                 console.log(error);
@@ -36,10 +36,10 @@ import axios from "axios";
     export function postVideogame(videogame) {
                 return async function(dispatch) {
                 try{
-                    var json = await axios.post('http://localhost:3001/videogames', videogame);
+                    var json = await axios.post('/videogames', videogame);
                     return dispatch({
                     type: "POST_GAME",
-                    payload: json
+                    payload: json ? json : null
                     });
                     }catch(err){
                         console.log(err);
