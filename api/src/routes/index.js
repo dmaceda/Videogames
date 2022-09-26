@@ -40,6 +40,7 @@ const getDbInfo = async () => {
 //Ruta para traer todos los videogames y filtrar por query
 
 router.get('/videogames', async (req, res) => {
+    try {
     const name = req.query.name;
     let allVideogames = [];
     for(let i = 1; i <= 5; i++){
@@ -58,7 +59,9 @@ router.get('/videogames', async (req, res) => {
               } else{
                   res.status(200).json(allVideogames);
               }
-           });
+           })    }catch(e){
+            console.log(e)
+            }
     });
 
 
@@ -66,6 +69,7 @@ router.get('/videogames', async (req, res) => {
 //Ruta para traer los generos y guardarlos en DB
 
  router.get('/genre', async (req, res) => {
+    try {
      const genreApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
      const genre = genreApi.data?.results.map(genre => {
          return genre.name  // genre = ["Action","Indie","Adventure","RPG",etc]//
@@ -77,6 +81,9 @@ router.get('/videogames', async (req, res) => {
      });
      const allGenres = await Genre.findAll();
      res.status(200).send(allGenres);
+    }catch(e){
+        console.log(e)
+    }
  })
  
 
@@ -85,6 +92,7 @@ router.get('/videogames', async (req, res) => {
 //Ruta para guardar nuevo videogame en la DB
 
  router.post('/videogames', async (req, res) => {
+    try{
      const { name, description, released, rating, platforms, genres, image, link} = req.body;
 
      const videogameCreated = await Videogame.create({
@@ -105,13 +113,16 @@ router.get('/videogames', async (req, res) => {
 
      videogameCreated.addGenre(genreCreated);
      res.status(201).send('Videojuego creado con exito');
-
+    }catch(e){
+        console.log(e)
+    }
  })
 
   
  //Ruta para traer un videogame por id  
 
 router.get('/videogames/:id', async (req, res) => {
+    try {
     const id = req.params.id;
   if (isNaN(id)) { //si mi id no es un numero busco en la DB
     try {
@@ -162,44 +173,47 @@ router.get('/videogames/:id', async (req, res) => {
         genres: apiUrl.data.genres.map(game => game.name),
         aditionalImg: apiUrl.data.background_image_additional
     };
-    res.status(200).json(detail);
-    }
+    res.status(200).json(detail)
+
+    }    }catch(e){
+        console.log(e)
+        }
 }
 );
 
  //Creo una ruta para actualizar un videogame
   
-    router.put('/videogames/:id', async (req, res) => {
-        const id = req.params.id;
-        const { name, description, released, rating, platforms, genres} = req.body;
-        const videogame = await Videogame.findByPk(id);
-        if (videogame) {
-            await videogame.update({
-                name,
-                description,
-                released,
-                rating,
-                platforms,
-            });
-            await videogame.setGenres(genres);
-            res.status(200).send('Videojuego actualizado con exito');
-        } else {
-            res.status(404).send('No se encontro el videojuego');
-        }
-    }
-    );
+//     router.put('/videogames/:id', async (req, res) => {
+//         const id = req.params.id;
+//         const { name, description, released, rating, platforms, genres} = req.body;
+//         const videogame = await Videogame.findByPk(id);
+//         if (videogame) {
+//             await videogame.update({
+//                 name,
+//                 description,
+//                 released,
+//                 rating,
+//                 platforms,
+//             });
+//             await videogame.setGenres(genres);
+//             res.status(200).send('Videojuego actualizado con exito');
+//         } else {
+//             res.status(404).send('No se encontro el videojuego');
+//         }
+//     }
+//     );
 
-//Ruta para eliminar un videogame
-    router.delete('/videogames/:id', async (req, res) => {
-        const id = req.params.id;
-        const videogame = await Videogame.findByPk(id);
-        if (videogame) {
-            await videogame.destroy();
-            res.status(200).send('Videojuego eliminado con exito');
-        } else {
-            res.status(404).send('No se encontro el videojuego');
-        }
-    } );
+// //Ruta para eliminar un videogame
+//     router.delete('/videogames/:id', async (req, res) => {
+//         const id = req.params.id;
+//         const videogame = await Videogame.findByPk(id);
+//         if (videogame) {
+//             await videogame.destroy();
+//             res.status(200).send('Videojuego eliminado con exito');
+//         } else {
+//             res.status(404).send('No se encontro el videojuego');
+//         }
+//     } );
 
 
 
