@@ -9,150 +9,60 @@ const { Videogame, Genre } = require('../db');
 
 //Funcion para traer videogames de la API
 
-// const getApiInfo = async (i) => {
-//     const apiUrl = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`);
-//     const apiInfo = apiUrl.data?.results.map(game => {
-//         return {
-//             id: game.id,
-//             name: game.name,
-//             image: game.background_image,
-//             rating: game.rating,
-//             genres: game.genres.map(genre => genre.name)
-//         };  
-//     });
-//     return apiInfo;
-// }
-
-// // Funcion para traer los videogames de la DB
-
-// const getDbInfo = async () => {
-//     return await Videogame.findAll({
-//         include: {
-//             model: Genre,
-//             attributes: ['name'],
-//             through: {
-//                 attributes: [],
-//             }
-//         }
-//     });
-// }
-
-// //Ruta para traer todos los videogames y filtrar por query
-
-// router.get('/videogames', async (req, res) => {
-//     try {
-//     const name = req.query.name;
-//     let allVideogames = [];
-//     for(let i = 1; i <= 5; i++){
-//         allVideogames.push(await getApiInfo(i));
-//     }
-//     const dbInfo = await getDbInfo();
-//     allVideogames.push(dbInfo);
-
-//     await Promise.all(allVideogames).then(allVideogames => {
-//         allVideogames = allVideogames.flat();
-//               if (name) {
-//                   let gameName = allVideogames.filter(game => game.name.toLowerCase().includes(name.toLowerCase()));
-//                   gameName.length ? 
-//                   res.status(200).send(gameName) :
-//                   res.status(404).send('No se encontro el videojuego');
-//               } else{
-//                   res.status(200).json(allVideogames);
-//               }
-//            })    }catch(e){
-//             console.log(e)
-//             }
-//     });
-
-//------------------------------------------------------
-const getApiInfo = async () => {
-    let promises = [];
-    let allGames = [];
-    try {
-      let url = `https://api.rawg.io/api/games?key=${API_KEY}`;
-      for (let i = 0; i < 5; i++) {
-        let apiVideo = await axios.get(url).then((response) => {
-          return response;
-        });
-        promises = promises.concat(apiVideo);
-        url = apiVideo.data.next;
-      }
-  
-      await Promise.all(promises).then((response) => {
-        for (let i = 0; i < promises.length; i++) {
-          allGames = allGames.concat(
-            response[i].data.results.map((el) => {
-              return {
-                id: el.id,
-                name: el.name,
-                image: el.background_image,
-                rating: el.rating,
-                genres: el.genres.map((e) => {
-                  return { name: e.name };
-                }),
-                
-                
-              };
-            })
-          );
-        }
-      });
-  
-      return allGames;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  //-------------------------------------------------------
-  const getDbInfo = async () => {
-    return await Videogame.findAll({
-      include: {
-        //trae el modelo genre mediante el atributo name
-        model: Genre,
-        attributes: ["name"],
-        througth: {
-          //mediante los atributos, traeme el name. sino traeria solo name porque es el unico, pero
-          //si hubiera mas atributos podria traer mas
-          attributes: [],
-        },
-      },
+const getApiInfo = async (i) => {
+    const apiUrl = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`);
+    const apiInfo = apiUrl.data?.results.map(game => {
+        return {
+            id: game.id,
+            name: game.name,
+            image: game.background_image,
+            rating: game.rating,
+            genres: game.genres.map(genre => genre.name)
+        };  
     });
-  };
-  //-------------------------------------------------------
-  
-  const getAllVideogames = async () => {
-    const apiInfo = await getApiInfo();
-    const dbInfo = await getDbInfo();
-    //console.log('api:::::',apiInfo)
-    //console.log('db::.::',dbInfo)
-    const infoTotal = apiInfo.concat(dbInfo);
-    return infoTotal;
-  
-  
-  };
-  //-------------------------------------------------------
-  router.get("/videogames", async (req, res) => {
+    return apiInfo;
+}
+
+// Funcion para traer los videogames de la DB
+
+const getDbInfo = async () => {
+    return await Videogame.findAll({
+        include: {
+            model: Genre,
+            attributes: ['name'],
+            through: {
+                attributes: [],
+            }
+        }
+    });
+}
+
+//Ruta para traer todos los videogames y filtrar por query
+
+router.get('/videogames', async (req, res) => {
+    try {
     const name = req.query.name;
-    const infoTotal = await getAllVideogames();
-    if (name) { 
-  
-   let videoNames =  infoTotal.filter((el) =>
-        el.name.toLowerCase().includes(name.toLowerCase()) 
-      );
-      videoNames.length
-        ? res.status(200).send(videoNames)
-        : res.status(400).send("no existe el videogame");
-      
-    }  else {
-      res.status(200).send(infoTotal);
-    } 
-  
-      
-  
+    let allVideogames = [];
+    for(let i = 1; i <= 5; i++){
+        allVideogames.push(await getApiInfo(i));
     }
-     
-  );
-  //-------------------------------------------------------
+    const dbInfo = await getDbInfo();
+    allVideogames.push(dbInfo);
+
+    await Promise.all(allVideogames).then(allVideogames => {
+        allVideogames = allVideogames.flat();
+              if (name) {
+                  let gameName = allVideogames.filter(game => game.name.toLowerCase().includes(name.toLowerCase()));
+                  gameName.length ? 
+                  res.status(200).send(gameName) :
+                  res.status(404).send('No se encontro el videojuego');
+              } else{
+                  res.status(200).json(allVideogames);
+              }
+           })    }catch(e){
+            console.log(e)
+            }
+    });
 
 
 
