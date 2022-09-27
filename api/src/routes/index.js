@@ -1,8 +1,7 @@
 require('dotenv').config();
 const { Router } = require('express');
 const axios = require('axios');
-//const { API_KEY } = process.env;
-const API_KEY= "a842f75575c840a59dc605b88b4ecf48"
+const { API_KEY } = process.env;
 const router = Router();
 const { Videogame, Genre } = require('../db');
 
@@ -86,15 +85,13 @@ const getApiInfo = async () => {
               return {
                 id: el.id,
                 name: el.name,
-                released: el.released,
+                image: el.background_image,
+                rating: el.rating,
                 genres: el.genres.map((e) => {
                   return { name: e.name };
                 }),
-                platforms: el.platforms.map((e) => {
-                  return { name: e.platform.name };
-                }),
-                rating: el.rating,
-                background_image: el.background_image,
+                
+                
               };
             })
           );
