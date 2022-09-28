@@ -108,6 +108,14 @@ import axios from "axios";
         }
     }
 
+        //Flag para renderizado condicional
+        export function setFlag (payload) {
+            return {
+            type: "SET_FLAG",
+            payload : payload
+            }
+        }
+
     //Obtiene los videojuegos por nombre
     export function getName(name){
         return async function(dispatch){

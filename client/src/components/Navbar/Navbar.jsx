@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {useSelector} from 'react-redux'
 import './Navbar.css'
 import iso from '../../images/isologo.png'
 import logo from '../../images/gamesland.png'
@@ -10,6 +11,8 @@ import plus from '../../images/plus.png'
 
 
 const Navbar = () => {
+  const flag = useSelector((state) => state.flag)
+  
   return (
     <nav id='navbar'>
       
@@ -20,7 +23,9 @@ const Navbar = () => {
 
       <Link className='link' to= '/home'><a href="!#" id='nav-links'><img src={home} alt="" className='i__' /><p className='p'>Home</p></a></Link>
       <Link className='link' to='/about'><a href="!#" id='nav-links'><img src={about} alt="" className='i__'/><p className='p'>About</p></a></Link>
-      <Link className='link' to="/create"><a href="!#" className="btn-clasic_"> <img src={plus} alt="" className='plus'/><p className='p'>Create</p></a></Link>
+      <Link className='link' to="/create"><a href="!#" className="btn-clasic_"> 
+      { flag !== 0 ? <img src={plus} alt="" className='plus'/> : null}
+      <p className='p'>Create</p></a></Link>
 
     </nav>
   )

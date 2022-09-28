@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom';
+import {setFlag} from '../../actions/index';
 import './About.css';
 import Navbar from '../Navbar/Navbar';
 import logo from '../../images/gamesland.png'
@@ -19,6 +21,13 @@ import post from "../../images/post.png"
 
 
 const About = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setFlag(0))
+  }
+  , [dispatch])
+
   return (
    
       <div className='about-container'>

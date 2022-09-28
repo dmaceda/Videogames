@@ -5,6 +5,7 @@ const initialState = {
   genres : [],
   videogameDetail: {},
   filteredGames: [],
+  flag: 0,
 }
 
 
@@ -119,6 +120,12 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 videogames: [],
                 }
+
+                case "SET_FLAG":
+                  return {
+                  ...state,
+                  flag: action.payload,
+                  }
 
               default:
               return state;

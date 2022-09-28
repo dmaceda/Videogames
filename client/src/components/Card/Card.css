@@ -115,4 +115,9 @@ filter: invert(37%) sepia(32%) saturate(889%) hue-rotate(158deg) brightness(96%)
     .card-item-image{
         height: 150px;
     }
+    .rating-container{
+        border-left: 20px solid rgb(255, 255, 0);
+        border-right: 20px solid rgb(255, 255, 0);
+        padding: 10;
+    }
 }

@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGames, getGenre, filterByGenre, filterCreated, orderByName, orderByRating, refreshState } from '../../actions';
-import { Link } from 'react-router-dom';
+import { getGames, getGenre, filterByGenre, filterCreated, orderByName, orderByRating, refreshState, setFlag } from '../../actions';
 import './Home.css';
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
@@ -43,6 +42,11 @@ const Home = () => {
   useEffect(() => {
     dispatch(getGenre());
   },[dispatch]);
+
+  useEffect(() => {
+    dispatch(setFlag(1))
+  }
+  , [dispatch])
 
 
 

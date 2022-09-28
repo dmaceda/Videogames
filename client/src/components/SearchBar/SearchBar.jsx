@@ -5,10 +5,10 @@ import './Searchbar.css';
 import search from '../../images/search.png'
 
 
+
 function SearchBar() {
       const dispatch = useDispatch();
       const [name, setName] = useState('');
-
       const handleChange = (e) => {
         e.preventDefault();
         setName(e.target.value);
