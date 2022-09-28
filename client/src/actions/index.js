@@ -90,7 +90,7 @@ import axios from "axios";
     export function getDetail(id){
         return async function(dispatch){
             try {
-            var json = await axios.get('http://localhost:3001/videogames/'+id);
+            var json = await axios.get('/videogames/'+id);
             return dispatch({
                 type: "GET_DETAIL",
                 payload: json.data
@@ -112,7 +112,7 @@ import axios from "axios";
     export function getName(name){
         return async function(dispatch){
             try {
-            var json = await axios.get('http://localhost:3001/videogames?name=' + name);
+            var json = await axios.get('/videogames?name=' + name);
             return dispatch({
                 type: "GET_NAME",
                 payload: json.data
