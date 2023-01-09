@@ -10,6 +10,7 @@ let sequelize =
         dialect: "postgres",
         host: DB_HOST || "localhost",
         port: 3001,
+        address: "0.0.0.0",
         username: DB_USER,
         password: DB_PASSWORD,
         pool: {
