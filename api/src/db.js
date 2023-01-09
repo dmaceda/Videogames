@@ -8,8 +8,8 @@ let sequelize =
     ? new Sequelize({
         database: DB_NAME,
         dialect: "postgres",
-        host: DB_HOST,
-        port: 5432,
+        host: DB_HOST || "localhost",
+        port: 3001,
         username: DB_USER,
         password: DB_PASSWORD,
         pool: {
