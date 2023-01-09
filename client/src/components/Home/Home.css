@@ -1,162 +1,141 @@
-.home-container{
-    padding: 30px;
-    margin-top: 20px;
+.home-container {
+  padding: 30px;
+  margin-top: 20px;
 }
 
-
-.paginado-container{
-    margin-top: 50px;
+.paginado-container {
+  margin-top: 50px;
 }
 
-
-.cards-container{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 70px 40px;
-    width: 95%;
-    margin: 0 auto;
-    min-height: 70vh;
-
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 70px 40px;
+  width: 95%;
+  margin: 0 auto;
+  min-height: 70vh;
 }
-.cards-items{
-    border-radius: 2rem;
-    transition: var(--transition);
-    height: 200px;
-    margin-bottom: 30px;
-
+.cards-items {
+  border-radius: 2rem;
+  transition: var(--transition);
+  height: 200px;
+  margin-bottom: 30px;
 }
-.cards-items:hover{
-    transition-duration: 500ms;
-    transform: scale(1.1)
+.cards-items:hover {
+  transition-duration: 500ms;
+  transform: scale(1.1);
 }
-
-
 
 .link {
-    text-decoration: none;
-    color: var(--white);
-    cursor: pointer;
+  text-decoration: none;
+  color: var(--white);
+  cursor: pointer;
 }
 
-
-.filter-container{
-    margin-top: 100px;
+.filter-container {
+  margin-top: 100px;
 }
-.filter{
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    margin-right: 30px;
-    margin-left: 15px;
-
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 30px;
+  margin-left: 15px;
 }
 
 .filter p {
-    margin-bottom: 5px;
-    font-size: small;
+  margin-bottom: 5px;
+  font-size: small;
 }
 
-.filter-item{
-    width: 100%;
-    max-width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    padding: 5px 8px;
-    padding-left: 20px;
-    margin: 2px;
-
+.filter-item {
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 5px 8px;
+  padding-left: 20px;
+  margin: 2px;
 }
 
-.filter select{
-    background: rgba(255, 255, 255, 0.2);
-    color: rgb(163, 162, 162);
-
+.filter select {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgb(163, 162, 162);
 }
 
-.create-search{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.create-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon {
-    float: left;
+  float: left;
 }
 
-.refresh{
-    background-color: transparent;
-    margin-right: 20px;
-    cursor: pointer;
+.refresh {
+  background-color: transparent;
+  margin-right: 20px;
+  cursor: pointer;
 }
 
-
-
-.ic:hover{
-    filter: invert(86%) sepia(12%) saturate(18%) hue-rotate(177deg) brightness(98%) contrast(97%);
-
-
+.ic:hover {
+  filter: invert(86%) sepia(12%) saturate(18%) hue-rotate(177deg)
+    brightness(98%) contrast(97%);
 }
-
 
 .load {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    left: 917px;
-    top: -130px;
- 
-  }
-  
-  .load--full-height {
-    align-items: center;
-    height: 100%;
-  
-  }
-  
-  .load::after {
-    content: "";
-    width: 50px;
-    height: 50px;
-    border: 10px solid #dddddd;
-    border-top-color: var(--color-primary);
-    border-radius: 50%;
-    transform: rotate(0.16turn);
-    animation: loading 1s ease infinite;
-    margin-top: 200px;
-  }
-  
-  @keyframes load {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 800px;
+  top: -130px;
+}
 
-    from {
-      transform: rotate(0turn);
-    }
-    
-    to {
-      transform: rotate(1turn);
-    }
+.load--full-height {
+  align-items: center;
+  height: 100%;
+}
+
+.load::after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border: 10px solid #dddddd;
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  transform: rotate(0.16turn);
+  animation: loading 1s ease infinite;
+  margin-top: 200px;
+}
+
+@keyframes load {
+  from {
+    transform: rotate(0turn);
   }
 
+  to {
+    transform: rotate(1turn);
+  }
+}
 
-  /*********** MEDIA QUERIES (MEDIUM DEVICES ************/
+/*********** MEDIA QUERIES (MEDIUM DEVICES ************/
 @media screen and (max-width: 1180px) {
-    .cards-container{
-         grid-template-columns: repeat(2, 1fr);  
-    }
-
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /*********** MEDIA QUERIES (SMALL DEVICES ************/
 @media screen and (max-width: 740px) {
-    .cards-container{
-        grid-template-columns: repeat(1, 1fr);
-        width: 90%;
-        
-    }
-    .filter-item{
-        max-width: 150px;
-        font-size: x-small;
-    }
-    
+  .cards-container {
+    grid-template-columns: repeat(1, 1fr);
+    width: 90%;
+  }
+  .filter-item {
+    max-width: 150px;
+    font-size: x-small;
+  }
 }
