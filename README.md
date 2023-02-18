@@ -7,7 +7,7 @@
 Games-Land es una SPA que consume la API de videojuegos RAWG.
 Nos permite realizar búsquedas, filtrados, ordenamientos y crear nuevos videojuegos que se almacenan en la base de datos.
 
-![Preview de la App ](https://github.com/dmaceda/Videogames/blob/master/GAMES-LAND.png)
+![Preview de la App ](https://github.com/dmaceda/Videogames/blob/master/client/src/images/mokup.png)
 
 #### Tecnologías utilizadas
 
