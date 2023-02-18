@@ -90,7 +90,7 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  left: 800px;
+  left: 50%;
   top: -130px;
 }
 
@@ -109,6 +109,12 @@
   transform: rotate(0.16turn);
   animation: loading 1s ease infinite;
   margin-top: 200px;
+}
+
+.load_container {
+  background-color: aqua;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes load {
@@ -137,5 +143,8 @@
   .filter-item {
     max-width: 150px;
     font-size: x-small;
+  }
+  .load {
+    left: 45%;
   }
 }
